@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Nikita AIR | Lennukitehas</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +13,6 @@
 </head>
 <body>
 
-    <!-- Animated background canvas -->
     <canvas id="bg-canvas"></canvas>
 
     <header id="header">
@@ -22,8 +23,7 @@
                     <path d="M16 2 L20 20 L16 30 L12 20Z" fill="rgba(255,255,255,0.15)"/>
                     <defs>
                         <linearGradient id="logoGrad" x1="2" y1="30" x2="30" y2="2" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#00d4ff"/>
-                            <stop offset="1" stop-color="#7c3aed"/>
+                            <stop stop-color="#00d4ff"/><stop offset="1" stop-color="#7c3aed"/>
                         </linearGradient>
                     </defs>
                 </svg>
@@ -31,13 +31,22 @@
             </a>
             <nav>
                 <ul>
-                    <li><a href="#hero">Avaleht</a></li>
-                    <li><a href="#specs">Tehnilised andmed</a></li>
-                    <li><a href="#about">Meie lugu</a></li>
-                    <li><a href="#footer">Kontakt</a></li>
+                    <li><a href="#hero" data-i18n="nav_home">Avaleht</a></li>
+                    <li><a href="#specs" data-i18n="nav_specs">Andmed</a></li>
+                    <li><a href="#about" data-i18n="nav_about">Meie lugu</a></li>
+                    <li><a href="#checkout" data-i18n="nav_checkout">Kassa</a></li>
+                    <li><a href="#dashboard" data-i18n="nav_db">Profiil</a></li>
                 </ul>
             </nav>
-            <a href="#specs" class="header-cta">Vaata andmeid</a>
+            <div class="controls">
+                <button id="lang-switch" class="control-btn" title="Muuda keelt">EN</button>
+                <button id="theme-switch" class="control-btn" title="Hele/Tume režiim">
+                    <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-11.314l.707.707m11.314 11.314l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                    </svg>
+                </button>
+            </div>
+            <a href="#specs" class="header-cta" data-i18n="header_cta">Vaata andmeid</a>
         </div>
     </header>
 
@@ -48,189 +57,246 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <span class="badge-dot"></span>
-                    Sprint 4 — Viimane toodang
+                    <span data-i18n="hero_badge">Sprint 4 — Viimane toodang</span>
                 </div>
-                <h1 class="hero-title">
-                    Tuleviku<br>
-                    lennukid,<br>
+                <h1 class="hero-title" data-i18n="hero_title">
+                    Tuleviku<br>lennukid,<br>
                     <span class="title-accent">volditud täna.</span>
                 </h1>
-                <p class="tagline">Kogemused, täpsus ja agiilne innovatsioon igas kurvis.</p>
+                <p class="tagline" data-i18n="hero_tagline">Kogemused, täpsus ja agiilne innovatsioon igas kurvis.</p>
                 <div class="hero-actions">
-                    <a href="#specs" class="btn btn--primary">
-                        <span>Vaata lähemalt</span>
+                    <a href="#checkout" class="btn btn--primary">
+                        <span data-i18n="hero_btn_main">Osta Kohe</span>
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </a>
-                    <a href="#about" class="btn btn--ghost">Meie protsess</a>
+                    <a href="#about" class="btn btn--ghost" data-i18n="hero_btn_ghost">Meie protsess</a>
                 </div>
             </div>
             <div class="hero-visual">
                 <div class="plane-orbit"></div>
-                <svg class="plane-svg" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Main body -->
+                <svg class="plane-svg" viewBox="0 0 500 400" fill="none">
                     <path d="M60 210 L440 95 L255 270 Z" fill="url(#planeBody)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-                    <!-- Underbelly -->
                     <path d="M60 210 L255 270 L215 325 Z" fill="url(#planeUnder)"/>
-                    <!-- Top crease highlight -->
                     <path d="M60 210 L440 95 L255 185 Z" fill="rgba(255,255,255,0.06)"/>
-                    <!-- Fold line -->
-                    <line x1="60" y1="210" x2="255" y2="185" stroke="rgba(0,212,255,0.5)" stroke-width="1.5" stroke-dasharray="8 5"/>
-                    <!-- Nose shine -->
-                    <ellipse cx="420" cy="103" rx="14" ry="8" fill="rgba(255,255,255,0.25)" transform="rotate(-25 420 103)"/>
-                    <!-- Trail dots -->
-                    <circle cx="42" cy="218" r="2.5" fill="#00d4ff" opacity="0.7"/>
-                    <circle cx="22" cy="226" r="1.8" fill="#00d4ff" opacity="0.45"/>
-                    <circle cx="6" cy="233" r="1.2" fill="#00d4ff" opacity="0.2"/>
                     <defs>
                         <linearGradient id="planeBody" x1="60" y1="210" x2="440" y2="95" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#c8dff5"/>
-                            <stop offset="1" stop-color="#edf5ff"/>
+                            <stop stop-color="#c8dff5"/><stop offset="1" stop-color="#edf5ff"/>
                         </linearGradient>
                         <linearGradient id="planeUnder" x1="60" y1="270" x2="255" y2="325" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#5a8fb8"/>
-                            <stop offset="1" stop-color="#2d5f8a"/>
+                            <stop stop-color="#5a8fb8"/><stop offset="1" stop-color="#2d5f8a"/>
                         </linearGradient>
                     </defs>
                 </svg>
-                <div class="plane-shadow"></div>
             </div>
         </div>
-        <!-- Metrics row inside hero -->
         <div class="container">
             <div class="hero-metrics">
                 <div class="metric">
                     <span class="metric-val">210<small>mm</small></span>
-                    <span class="metric-key">Tiivaulatus</span>
+                    <span class="metric-key" data-i18n="spec_span">Tiivaulatus</span>
                 </div>
                 <div class="metric-divider"></div>
                 <div class="metric">
                     <span class="metric-val">18<small>m</small></span>
-                    <span class="metric-key">Max viskekaugus</span>
+                    <span class="metric-key" data-i18n="spec_dist">Max viskekaugus</span>
                 </div>
                 <div class="metric-divider"></div>
                 <div class="metric">
                     <span class="metric-val">80<small>g/m²</small></span>
-                    <span class="metric-key">Paberikaal</span>
+                    <span class="metric-key" data-i18n="spec_weight">Paberikaal</span>
                 </div>
                 <div class="metric-divider"></div>
                 <div class="metric">
                     <span class="metric-val">4<small>sprint</small></span>
-                    <span class="metric-key">Iteratsioone</span>
+                    <span class="metric-key" data-i18n="spec_iters">Iteratsioone</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="specs" class="specs">
+    <section id="specs" class="section section--dark specs">
         <div class="specs-bg-label">SPECS</div>
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">// 01 TEHNILISED ANDMED</span>
-                <h2 class="section-title">Tehniline kirjeldus</h2>
-                <p class="section-sub">Kõik näitajad mõõdetud reaalsetes tingimustes Sprint 4 lõpptoodangul.</p>
+                <span class="section-tag" data-i18n="specs_tag">// 01 TEHNILISED ANDMED</span>
+                <h2 class="section-title" data-i18n="specs_title">Tehniline kirjeldus</h2>
+                <p class="section-sub" data-i18n="specs_sub">Kõik näitajad mõõdetud reaalsetes tingimustes Sprint 4 lõpptoodangul.</p>
             </div>
             <div class="specs-grid">
-                <div class="spec-card" data-reveal>
+                <div class="spec-card">
                     <div class="spec-card__icon">📐</div>
-                    <div class="spec-card__label">Tiivaulatus</div>
+                    <div class="spec-card__label" data-i18n="spec_span">Tiivaulatus</div>
                     <div class="spec-card__value">210<span>mm</span></div>
-                    <p class="spec-card__note">Optimeeritud tõstejõu ja suunamisstabilisuse tasakaal</p>
+                    <p class="spec-card__note" data-i18n="spec_span_note">Optimeeritud tõstejõu ja suunamisstabilisuse tasakaal</p>
                 </div>
-                <div class="spec-card" data-reveal>
+                <div class="spec-card">
+                    <div class="spec-card__icon">🚀</div>
+                    <div class="spec-card__label" data-i18n="spec_dist">Max viskekaugus</div>
+                    <div class="spec-card__value">18<span>m</span></div>
+                    <p class="spec-card__note" data-i18n="spec_dist_note">Testitud siseruumides ilma tuuleta standardviskega</p>
+                </div>
+                <div class="spec-card">
                     <div class="spec-card__icon">📄</div>
-                    <div class="spec-card__label">Paberikulu</div>
-                    <div class="spec-card__value">80<span>g/m² A4</span></div>
-                    <p class="spec-card__note">Standard kontoripaberist maksimaalne aerodünaamiline tulemus</p>
+                    <div class="spec-card__label" data-i18n="spec_weight">Paberikaal</div>
+                    <div class="spec-card__value">80<span>g/m²</span></div>
+                    <p class="spec-card__note" data-i18n="spec_weight_note">Kõrgeima kvaliteediga A4 paber vastupidavuse tagamiseks</p>
                 </div>
-                <div class="spec-card" data-reveal>
-                    <div class="spec-card__icon">🎯</div>
-                    <div class="spec-card__label">Max viskekaugus</div>
-                    <div class="spec-card__value">15–18<span>m</span></div>
-                    <p class="spec-card__note">Sisetingimustes 1.8m kõrguselt, 30° optimaalse viskenurkga</p>
-                </div>
-                <div class="spec-card" data-reveal>
-                    <div class="spec-card__icon">🌊</div>
-                    <div class="spec-card__label">Lennu iseloom</div>
-                    <div class="spec-card__value" style="font-size:1.6rem">Stabiilne</div>
-                    <p class="spec-card__note">Ühtlane libisemine ilma kaldumiseta — glaseerimine tipptasemel</p>
+                <div class="spec-card">
+                    <div class="spec-card__icon">🔄</div>
+                    <div class="spec-card__label" data-i18n="spec_iters">Iteratsioone</div>
+                    <div class="spec-card__value">4<span></span></div>
+                    <p class="spec-card__note" data-i18n="spec_iters_note">Arendatud nelja agiilse sprindi jooksul meeskonna poolt</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="about">
+    <section id="about" class="section section--light">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">// 02 MEIE LUGU</span>
-                <h2 class="section-title">Meie tehasest</h2>
+                <span class="section-tag" data-i18n="about_tag">// 02 MEIE LUGU & MUDEL</span>
+                <h2 class="section-title" data-i18n="about_title">Vastuvõtukriteeriumid ja 3D</h2>
             </div>
             <div class="about-grid">
-                <div class="about-text" data-reveal>
-                    <p>Alustasime oma teekonda klassikalise <strong>Taylorismi</strong> meetodil, kus iga liigutus oli rangelt paigas. Kuid lennukitehase eksperimendi käigus mõistsime, et tõeline kvaliteet sünnib läbi <strong>agiilse tootearenduse</strong>.</p>
-                    <p>Meie protsessis mängis võtmerolli <strong>"Raudne kolmnurk"</strong>: tasakaalustasime aega, skoopi ja kulusid, et saavutada maksimaalne lennukaugus ja töökindlus.</p>
-                    <p>Tänu iteratsioonidele ja meeskonnatööle suutsime konveiermeetodilt üle minna kiirele ja paindlikule tootmisele.</p>
-                    <!-- Iron Triangle visual -->
-                    <div class="iron-triangle">
-                        <div class="triangle-label triangle-label--top">Kvaliteet</div>
-                        <svg viewBox="0 0 260 220" fill="none">
-                            <path d="M130 18 L242 195 L18 195 Z" stroke="url(#triG)" stroke-width="2" fill="rgba(0,212,255,0.04)"/>
-                            <circle cx="130" cy="18" r="5" fill="#00d4ff"/>
-                            <circle cx="242" cy="195" r="5" fill="#7c3aed"/>
-                            <circle cx="18" cy="195" r="5" fill="#06b6d4"/>
-                            <text x="130" y="120" text-anchor="middle" font-family="DM Mono" font-size="10" fill="rgba(255,255,255,0.3)">vali kaks</text>
-                            <defs>
-                                <linearGradient id="triG" x1="18" y1="195" x2="242" y2="18" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#06b6d4"/>
-                                    <stop offset="0.5" stop-color="#00d4ff"/>
-                                    <stop offset="1" stop-color="#7c3aed"/>
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                        <div class="triangle-bottom">
-                            <span>Kiirus</span>
-                            <span>Kulud</span>
-                        </div>
+                <div>
+                    <h3 data-i18n="criteria_title">Lennuki vastuvõtukriteeriumid</h3>
+                    <ul class="process-list">
+                        <li class="process-item">
+                            <h4 data-i18n="crit_1_title">Täpne voltimisskeem</h4>
+                            <p data-i18n="crit_1_desc">Lennuk peab olema volditud ilma asjatute kortsudeta ning vastama AeroFold spetsifikatsioonile.</p>
+                        </li>
+                        <li class="process-item">
+                            <h4 data-i18n="crit_2_title">Lennukaugus > 15m</h4>
+                            <p data-i18n="crit_2_desc">Kontrolltesti käigus peab mudel läbima sirgjooneliselt vähemalt 15 meetrit.</p>
+                        </li>
+                        <li class="process-item">
+                            <h4 data-i18n="crit_3_title">Struktuurne terviklikkus</h4>
+                            <p data-i18n="crit_3_desc">Pärast kolme viset ei tohi lennuki nina olla kriitiliselt deformeerunud.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="model-container">
+                    <div class="model-cube"></div>
+                    <div class="model-label" data-i18n="model_label">AeroFold 3D Mudeli Eelvaade</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="checkout" class="section section--dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="checkout_tag">// 03 KASSA</span>
+                <h2 class="section-title" data-i18n="checkout_title">Vormista Tellimus</h2>
+            </div>
+            <div class="checkout-grid">
+                <div>
+                    <h3 style="margin-bottom: 1rem; color: var(--white);" data-i18n="shipping_title">Vali tarneviis</h3>
+                    <div class="shipping-options">
+                        <label class="shipping-option">
+                            <input type="radio" name="shipping" checked>
+                            <div class="shipping-info">
+                                <strong>Omniva Pakiautomaat</strong>
+                                <span>2-3 tööpäeva (2.99 €)</span>
+                            </div>
+                        </label>
+                        <label class="shipping-option">
+                            <input type="radio" name="shipping">
+                            <div class="shipping-info">
+                                <strong>Smartpost Itella</strong>
+                                <span>1-2 tööpäeva (2.59 €)</span>
+                            </div>
+                        </label>
+                        <label class="shipping-option">
+                            <input type="radio" name="shipping">
+                            <div class="shipping-info">
+                                <strong>DPD Kuller</strong>
+                                <span>Järgmine tööpäev (4.99 €)</span>
+                            </div>
+                        </label>
                     </div>
                 </div>
-                <div class="about-right" data-reveal>
-                    <div class="stat-box">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Agiilsus</span>
-                        <p class="stat-note">Taylorismist kaasaegse sprinditootmiseni</p>
+                <div class="payment-panel">
+                    <h3 style="color: var(--white);" data-i18n="payment_title">Maksmine</h3>
+                    <p style="color: var(--muted); font-size: 0.9rem;" data-i18n="payment_desc">Kõik maksed töödeldakse turvaliselt läbi Stripe makselahenduse.</p>
+                    <h2 style="color: var(--accent); font-family: 'Bebas Neue'; font-size: 2.5rem; margin: 1rem 0;">€ 9.99</h2>
+                    <button class="stripe-btn" onclick="alert('Stripe Checkout simulatsioon käivitatud!')">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.996 0C5.371 0 .002 5.366.002 11.992c0 6.623 5.369 11.992 11.994 11.992 6.627 0 11.996-5.369 11.996-11.992C23.992 5.366 18.623 0 11.996 0zm-1.097 18.232v-3.212c-2.311.66-3.791.135-4.568-.783-1.047-1.238-.567-3.084.773-4.004 1.258-.864 3.018-.755 3.795-.62v-1.12c0-1.282-.578-1.921-1.96-1.921-1.144 0-2.327.42-3.111.954l-1.037-2.35c1.196-.807 3.003-1.328 4.772-1.328 2.87 0 4.195 1.547 4.195 4.316v7.35c0 1.291.246 2.062.637 2.664v.054h-2.88c-.286-.481-.462-1.157-.514-1.952-.871 1.256-2.486 2.025-4.103 2.025-2.222 0-3.83-1.23-3.83-3.125 0-2.021 1.517-3.155 4.148-3.666 1.834-.356 3.076-.56 3.684-.814v-.966c0-1.153-.615-1.745-1.854-1.745-1.218 0-2.585.343-3.52 1l-.89-2.152c1.234-.78 2.946-1.192 4.675-1.192 2.766 0 4.152 1.488 4.152 4.194v4.444c0 .873.181 1.512.441 1.94h-2.576c-.167-.373-.284-.87-.336-1.503-.842 1.055-2.254 1.636-3.738 1.636-1.954 0-3.344-1.025-3.344-2.613 0-1.758 1.344-2.671 3.633-3.085 1.523-.275 2.67-.442 3.238-.638v-1.13c0-1.082-.57-1.611-1.684-1.611-1.086 0-2.25.334-3.023.833l-.837-1.916c1.077-.66 2.535-1.025 4.05-1.025 2.502 0 3.734 1.328 3.734 3.766v4.618c0 1.01.212 1.69.544 2.155H11.9v-.058c-.147-.282-.24-.707-.29-1.282-.777.948-2.052 1.464-3.414 1.464-1.755 0-2.983-.865-2.983-2.186 0-1.42 1.158-2.157 3.087-2.485 1.353-.228 2.378-.363 2.898-.521v-1.107c0-.986-.508-1.472-1.504-1.472-1.002 0-2.05.29-2.736.702l-.74-1.685c.974-.567 2.261-.88 3.612-.88 2.25 0 3.35 1.177 3.35 3.328v4.616c0 1.144.254 1.884.665 2.366v.056H10.9zm7.042-8.384c0 3.125-2.404 5.671-5.545 5.671-3.143 0-5.548-2.546-5.548-5.671 0-3.127 2.405-5.672 5.548-5.672 3.141 0 5.545 2.545 5.545 5.672z"/></svg>
+                        Maksma turvaliselt (Stripe)
+                    </button>
+                    <span class="payment-note">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                        Turvatud 256-bitise krüpteeringuga
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dashboard" class="section section--light">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="db_tag">// 04 ANDMEBAAS & TURVALISUS</span>
+                <h2 class="section-title" data-i18n="db_title">Profiili Süsteemid</h2>
+            </div>
+            <div class="dashboard-grid">
+                <div>
+                    <h3 style="margin-bottom: 1rem; color: var(--text);" data-i18n="history_title">Tehingute ajalugu (DB Simulatsioon)</h3>
+                    <div style="overflow-x: auto;">
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Kuupäev</th>
+                                    <th>Toode</th>
+                                    <th>Summa</th>
+                                    <th>Staatus</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#TRX-001</td>
+                                    <td>04.06.2026</td>
+                                    <td>AeroFold Sprint 4</td>
+                                    <td>€ 9.99</td>
+                                    <td><span class="status-badge">Makstud (Stripe)</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#TRX-002</td>
+                                    <td>02.06.2026</td>
+                                    <td>AeroFold Sprint 3</td>
+                                    <td>€ 7.99</td>
+                                    <td><span class="status-badge">Makstud</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#TRX-003</td>
+                                    <td>28.05.2026</td>
+                                    <td>Kohandatud mudel</td>
+                                    <td>€ 14.50</td>
+                                    <td><span class="status-badge">Makstud</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="stat-box stat-box--alt">
-                        <span class="stat-number">0%</span>
-                        <span class="stat-label">Praaktooted</span>
-                        <p class="stat-note">Sprint 4 toodang — kõik lennukid õhus</p>
-                    </div>
-                    <div class="process-list">
-                        <div class="process-item">
-                            <span class="process-num">01</span>
-                            <div>
-                                <strong>Taylori konveier</strong>
-                                <p>Kiire tootmine, ebaühtlane kvaliteet</p>
-                            </div>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 1rem; color: var(--text);" data-i18n="sec_title">Turvaaudit</h3>
+                    <div class="security-panel">
+                        <div class="security-item">
+                            <span class="sec-label">🛡️ Auditi staatus</span>
+                            <span class="sec-value">LÄBITUD</span>
                         </div>
-                        <div class="process-item">
-                            <span class="process-num">02</span>
-                            <div>
-                                <strong>Retrospektiiv & analüüs</strong>
-                                <p>Vigade kaardistamine, parendusotsused</p>
-                            </div>
+                        <div class="security-item">
+                            <span class="sec-label">🦠 Haavatavuste kontroll</span>
+                            <span class="sec-value">0 LEITUD</span>
                         </div>
-                        <div class="process-item">
-                            <span class="process-num">03</span>
-                            <div>
-                                <strong>Agiilne sprint</strong>
-                                <p>Ristfunktsioon, pidev tagasiside</p>
-                            </div>
+                        <div class="security-item">
+                            <span class="sec-label">🔧 Kriitilised vead</span>
+                            <span class="sec-value">PARANDATUD</span>
                         </div>
-                        <div class="process-item">
-                            <span class="process-num">04</span>
-                            <div>
-                                <strong>Toodang valmis ✓</strong>
-                                <p>Parim lennukaugus kogu eksperimendi jooksul</p>
-                            </div>
+                        <div class="security-item">
+                            <span class="sec-label">🔒 XSS / CSP Kaitse</span>
+                            <span class="sec-value">AKTIIVNE</span>
                         </div>
                     </div>
                 </div>
@@ -242,81 +308,130 @@
         <div class="container footer-inner">
             <div class="footer-brand">
                 <div class="logo footer-logo">Aero<span>Fold</span></div>
-                <p>Voldime unelmad reaalsuseks —<br>üks sprint korraga.</p>
+                <p data-i18n="footer_slogan">Voldime unelmad reaalsuseks —<br>üks sprint korraga.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#about">Privaatsuspoliitika</a>
+                <a href="#about">Kasutustingimused</a>
+                <a href="#checkout">Tarneinfo</a>
             </div>
             <div class="footer-meta">
-                <p>&copy; 2026 <strong>Aerofold Factory</strong>. Kõik õigused kaitstud.</p>
-                <p><strong>Ruhm:</strong> Nikita Nikiforov, TARpv24</p>
-                <p><strong>Projekt:</strong> VR 5.1 – Lennukitehase Koduleht (AT 5.0)</p>
+                <p>&copy; 2026 <strong data-i18n="footer_rights">Aerofold Factory. Kõik õigused kaitstud.</strong></p>
+                <p><strong data-i18n="footer_group">Rühm:</strong> Nikita Nikiforov, TARpv24</p>
             </div>
         </div>
     </footer>
 
     <script>
-    // Subtle particle canvas background
+    const translations = {
+        et: {
+            nav_home: "Avaleht", nav_specs: "Andmed", nav_about: "Meie lugu", nav_checkout: "Kassa", nav_db: "Profiil",
+            header_cta: "Vaata andmeid",
+            hero_badge: "Sprint 4 — Viimane toodang",
+            hero_title: "Tuleviku<br>lennukid,<br><span class='title-accent'>volditud täna.</span>",
+            hero_tagline: "Kogemused, täpsus ja agiilne innovatsioon igas kurvis.",
+            hero_btn_main: "Osta kohe", hero_btn_ghost: "Meie protsess",
+            specs_tag: "// 01 TEHNILISED ANDMED", specs_title: "Tehniline kirjeldus", specs_sub: "Kõik näitajad mõõdetud reaalsetes tingimustes Sprint 4 lõpptoodangul.",
+            spec_span: "Tiivaulatus", spec_span_note: "Optimeeritud tõstejõu ja suunamisstabilisuse tasakaal",
+            spec_dist: "Max viskekaugus", spec_dist_note: "Testitud siseruumides ilma tuuleta standardviskega",
+            spec_weight: "Paberikaal", spec_weight_note: "Kõrgeima kvaliteediga A4 paber vastupidavuse tagamiseks",
+            spec_iters: "Iteratsioone", spec_iters_note: "Arendatud nelja agiilse sprindi jooksul meeskonna poolt",
+            about_tag: "// 02 MEIE LUGU & MUDEL", about_title: "Vastuvõtukriteeriumid ja 3D",
+            criteria_title: "Lennuki vastuvõtukriteeriumid",
+            crit_1_title: "Täpne voltimisskeem", crit_1_desc: "Lennuk peab olema volditud ilma asjatute kortsudeta ning vastama AeroFold spetsifikatsioonile.",
+            crit_2_title: "Lennukaugus > 15m", crit_2_desc: "Kontrolltesti käigus peab mudel läbima sirgjooneliselt vähemalt 15 meetrit.",
+            crit_3_title: "Struktuurne terviklikkus", crit_3_desc: "Pärast kolme viset ei tohi lennuki nina olla kriitiliselt deformeerunud.",
+            model_label: "AeroFold 3D Mudeli Eelvaade",
+            checkout_tag: "// 03 KASSA", checkout_title: "Vormista Tellimus",
+            shipping_title: "Vali tarneviis", payment_title: "Maksmine", payment_desc: "Kõik maksed töödeldakse turvaliselt läbi Stripe makselahenduse.",
+            db_tag: "// 04 ANDMEBAAS & TURVALISUS", db_title: "Profiili Süsteemid",
+            history_title: "Tehingute ajalugu (DB Simulatsioon)", sec_title: "Turvaaudit",
+            footer_slogan: "Voldime unelmad reaalsuseks —<br>üks sprint korraga.",
+            footer_rights: "Aerofold Factory. Kõik õigused kaitstud.", footer_group: "Rühm:"
+        },
+        en: {
+            nav_home: "Home", nav_specs: "Specs", nav_about: "Our Story", nav_checkout: "Checkout", nav_db: "Profile",
+            header_cta: "View Specs",
+            hero_badge: "Sprint 4 — Latest Output",
+            hero_title: "Future<br>planes,<br><span class='title-accent'>folded today.</span>",
+            hero_tagline: "Experience, precision, and agile innovation in every fold.",
+            hero_btn_main: "Buy Now", hero_btn_ghost: "Our Process",
+            specs_tag: "// 01 TECHNICAL SPECS", specs_title: "Technical Description", specs_sub: "All metrics measured in real conditions at the end of Sprint 4.",
+            spec_span: "Wingspan", spec_span_note: "Balanced lift and directional stability optimized.",
+            spec_dist: "Max Distance", spec_dist_note: "Tested indoors with no wind using a standard throw.",
+            spec_weight: "Paper Weight", spec_weight_note: "Highest quality A4 paper to ensure durability.",
+            spec_iters: "Iterations", spec_iters_note: "Developed over four agile sprints by the team.",
+            about_tag: "// 02 OUR STORY & MODEL", about_title: "Acceptance Criteria & 3D",
+            criteria_title: "Plane Acceptance Criteria",
+            crit_1_title: "Precise Folding Scheme", crit_1_desc: "The plane must be folded without unnecessary creases and match the AeroFold spec.",
+            crit_2_title: "Flight Distance > 15m", crit_2_desc: "During control tests, the model must fly straight for at least 15 meters.",
+            crit_3_title: "Structural Integrity", crit_3_desc: "After three throws, the plane's nose must not be critically deformed.",
+            model_label: "AeroFold 3D Model Preview",
+            checkout_tag: "// 03 CHECKOUT", checkout_title: "Place Your Order",
+            shipping_title: "Select Shipping", payment_title: "Payment", payment_desc: "All payments are processed securely via Stripe.",
+            db_tag: "// 04 DATABASE & SECURITY", db_title: "Profile Systems",
+            history_title: "Transaction History (DB Sim)", sec_title: "Security Audit",
+            footer_slogan: "Folding dreams into reality —<br>one sprint at a time.",
+            footer_rights: "Aerofold Factory. All rights reserved.", footer_group: "Group:"
+        }
+    };
+
+    const langBtn = document.getElementById('lang-switch');
+    const themeBtn = document.getElementById('theme-switch');
+    let currentLang = localStorage.getItem('lang') || 'et';
+
+    const updateContent = () => {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[currentLang][key]) {
+                el.innerHTML = translations[currentLang][key];
+            }
+        });
+        langBtn.textContent = currentLang === 'et' ? 'EN' : 'EE';
+        document.documentElement.lang = currentLang;
+    };
+
+    langBtn.addEventListener('click', () => {
+        currentLang = currentLang === 'et' ? 'en' : 'et';
+        localStorage.setItem('lang', currentLang);
+        updateContent();
+    });
+
+    themeBtn.addEventListener('click', () => {
+        const isLight = document.documentElement.classList.toggle('light-mode');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light' || (!savedTheme && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.documentElement.classList.add('light-mode');
+    }
+    updateContent();
+
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
     let W, H, particles = [];
-
-    function resize() {
-        W = canvas.width = window.innerWidth;
-        H = canvas.height = window.innerHeight;
-    }
-
+    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
     function initParticles() {
         particles = Array.from({length: 55}, () => ({
             x: Math.random() * W, y: Math.random() * H,
             vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25,
-            r: Math.random() * 1.5 + .3,
-            a: Math.random() * .35 + .05
+            r: Math.random() * 1.5 + .3, a: Math.random() * .35 + .05
         }));
     }
-
     function drawFrame() {
         ctx.clearRect(0, 0, W, H);
         particles.forEach(p => {
             p.x += p.vx; p.y += p.vy;
             if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
             if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(0,212,255,${p.a})`;
-            ctx.fill();
-        });
-        // Draw faint connecting lines
-        particles.forEach((a, i) => {
-            particles.slice(i+1).forEach(b => {
-                const d = Math.hypot(a.x-b.x, a.y-b.y);
-                if (d < 130) {
-                    ctx.beginPath();
-                    ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
-                    ctx.strokeStyle = `rgba(0,212,255,${.07 * (1 - d/130)})`;
-                    ctx.lineWidth = .5;
-                    ctx.stroke();
-                }
-            });
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(0,212,255,${p.a})`; ctx.fill();
         });
         requestAnimationFrame(drawFrame);
     }
-
     resize(); initParticles(); drawFrame();
     window.addEventListener('resize', () => { resize(); initParticles(); });
-
-    // Reveal on scroll
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add('revealed');
-                observer.unobserve(e.target);
-            }
-        });
-    }, {threshold: 0.15});
-    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
-
-    // Sticky header style
-    window.addEventListener('scroll', () => {
-        document.getElementById('header').classList.toggle('scrolled', window.scrollY > 60);
-    });
     </script>
 </body>
 </html>
