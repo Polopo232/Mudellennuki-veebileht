@@ -182,134 +182,190 @@
             </div>
         </div>
     </section>
+<section id="checkout" class="section section--light">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Tellimuse vormistamine</span>
+            <h2 class="section-title">Kassa ja Maksmine</h2>
+            <p class="section-sub">Valige sobiv tarneviis ja testige turvalist maksmist Stripe'i simulaatori abil.</p>
+        </div>
 
-    <section id="checkout" class="section section--dark">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" data-i18n="checkout_tag">// 03 KASSA</span>
-                <h2 class="section-title" data-i18n="checkout_title">Vormista Tellimus</h2>
-            </div>
-            <div class="checkout-grid">
-                <div>
-                    <h3 style="margin-bottom: 1rem; color: var(--white);" data-i18n="shipping_title">Vali tarneviis</h3>
-                    <div class="shipping-options">
-                        <label class="shipping-option">
-                            <input type="radio" name="shipping" checked>
-                            <div class="shipping-info">
-                                <strong>Omniva Pakiautomaat</strong>
-                                <span>2-3 tööpäeva (2.99 €)</span>
-                            </div>
-                        </label>
-                        <label class="shipping-option">
-                            <input type="radio" name="shipping">
-                            <div class="shipping-info">
-                                <strong>Smartpost Itella</strong>
-                                <span>1-2 tööpäeva (2.59 €)</span>
-                            </div>
-                        </label>
-                        <label class="shipping-option">
-                            <input type="radio" name="shipping">
-                            <div class="shipping-info">
-                                <strong>DPD Kuller</strong>
-                                <span>Järgmine tööpäev (4.99 €)</span>
-                            </div>
-                        </label>
+        <div class="checkout-grid">
+            <div class="shipping-options">
+                <h3>Tarneviisi valik</h3>
+                
+                <label class="shipping-option">
+                    <input type="radio" name="shipping" value="0" checked onchange="updateTotal()">
+                    <div class="shipping-info">
+                        <strong>Omniva pakiautomaat</strong>
+                        <span>Hind: 0.00 € | 2-3 tööpäeva</span>
                     </div>
+                </label>
+
+                <label class="shipping-option">
+                    <input type="radio" name="shipping" value="3.49" onchange="updateTotal()">
+                    <div class="shipping-info">
+                        <strong>Smartpost Itella</strong>
+                        <span>Hind: 3.49 € | 1-2 tööpäeva</span>
+                    </div>
+                </label>
+
+                <label class="shipping-option">
+                    <input type="radio" name="shipping" value="5.99" onchange="updateTotal()">
+                    <div class="shipping-info">
+                        <strong>DPD Kuller</strong>
+                        <span>Hind: 5.99 € | Tarne kätte ukseni</span>
+                    </div>
+                </label>
+            </div>
+
+            <div class="payment-panel">
+                <h3>Kokku tasuda</h3>
+                <div style="font-size: 2rem; font-weight: bold; color: var(--white); margin-bottom: 1rem;">
+                    <span id="total-price">149.00</span> €
                 </div>
-                <div class="payment-panel">
-                    <h3 style="color: var(--white);" data-i18n="payment_title">Maksmine</h3>
-                    <p style="color: var(--muted); font-size: 0.9rem;" data-i18n="payment_desc">Kõik maksed töödeldakse turvaliselt läbi Stripe makselahenduse.</p>
-                    <h2 style="color: var(--accent); font-family: 'Bebas Neue'; font-size: 2.5rem; margin: 1rem 0;">€ 9.99</h2>
-                    <button class="stripe-btn" onclick="alert('Stripe Checkout simulatsioon käivitatud!')">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.996 0C5.371 0 .002 5.366.002 11.992c0 6.623 5.369 11.992 11.994 11.992 6.627 0 11.996-5.369 11.996-11.992C23.992 5.366 18.623 0 11.996 0zm-1.097 18.232v-3.212c-2.311.66-3.791.135-4.568-.783-1.047-1.238-.567-3.084.773-4.004 1.258-.864 3.018-.755 3.795-.62v-1.12c0-1.282-.578-1.921-1.96-1.921-1.144 0-2.327.42-3.111.954l-1.037-2.35c1.196-.807 3.003-1.328 4.772-1.328 2.87 0 4.195 1.547 4.195 4.316v7.35c0 1.291.246 2.062.637 2.664v.054h-2.88c-.286-.481-.462-1.157-.514-1.952-.871 1.256-2.486 2.025-4.103 2.025-2.222 0-3.83-1.23-3.83-3.125 0-2.021 1.517-3.155 4.148-3.666 1.834-.356 3.076-.56 3.684-.814v-.966c0-1.153-.615-1.745-1.854-1.745-1.218 0-2.585.343-3.52 1l-.89-2.152c1.234-.78 2.946-1.192 4.675-1.192 2.766 0 4.152 1.488 4.152 4.194v4.444c0 .873.181 1.512.441 1.94h-2.576c-.167-.373-.284-.87-.336-1.503-.842 1.055-2.254 1.636-3.738 1.636-1.954 0-3.344-1.025-3.344-2.613 0-1.758 1.344-2.671 3.633-3.085 1.523-.275 2.67-.442 3.238-.638v-1.13c0-1.082-.57-1.611-1.684-1.611-1.086 0-2.25.334-3.023.833l-.837-1.916c1.077-.66 2.535-1.025 4.05-1.025 2.502 0 3.734 1.328 3.734 3.766v4.618c0 1.01.212 1.69.544 2.155H11.9v-.058c-.147-.282-.24-.707-.29-1.282-.777.948-2.052 1.464-3.414 1.464-1.755 0-2.983-.865-2.983-2.186 0-1.42 1.158-2.157 3.087-2.485 1.353-.228 2.378-.363 2.898-.521v-1.107c0-.986-.508-1.472-1.504-1.472-1.002 0-2.05.29-2.736.702l-.74-1.685c.974-.567 2.261-.88 3.612-.88 2.25 0 3.35 1.177 3.35 3.328v4.616c0 1.144.254 1.884.665 2.366v.056H10.9zm7.042-8.384c0 3.125-2.404 5.671-5.545 5.671-3.143 0-5.548-2.546-5.548-5.671 0-3.127 2.405-5.672 5.548-5.672 3.141 0 5.545 2.545 5.545 5.672z"/></svg>
-                        Maksma turvaliselt (Stripe)
-                    </button>
-                    <span class="payment-note">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                        Turvatud 256-bitise krüpteeringuga
-                    </span>
+
+                <button class="stripe-btn" id="pay-button" onclick="simulatePayment()">
+                    <span id="btn-text">Maksa Stripe kaudu</span>
+                    <div id="btn-spinner" class="spinner" style="display: none;"></div>
+                </button>
+
+                <div class="payment-note">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <span>Turvaline ühendus. Demorežiim.</span>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="dashboard" class="section section--light">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" data-i18n="db_tag">// 04 ANDMEBAAS & TURVALISUS</span>
-                <h2 class="section-title" data-i18n="db_title">Profiili Süsteemid</h2>
+<section id="dashboard" class="section section--dark">
+    <div class="container">
+        <div class="dashboard-grid">
+            <div>
+                <h3>Tehingute ajalugu (Andmebaas)</h3>
+                <p style="color: var(--muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Andmed uuenevad reaalajas pärast edukat makset ülalpool.</p>
+                
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Tehingu ID</th>
+                            <th>Kuupäev</th>
+                            <th>Tarneviis</th>
+                            <th>Summa</th>
+                            <th>Staatus</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transaction-history">
+                        <tr>
+                            <td>#TXN-98412</td>
+                            <td>04.06.2026</td>
+                            <td>Omniva</td>
+                            <td>149.00 €</td>
+                            <td><span class="status-badge">Success</span></td>
+                        </tr>
+                        <tr>
+                            <td>#TXN-97305</td>
+                            <td>02.06.2026</td>
+                            <td>Smartpost</td>
+                            <td>152.49 €</td>
+                            <td><span class="status-badge">Success</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="dashboard-grid">
-                <div>
-                    <h3 style="margin-bottom: 1rem; color: var(--text);" data-i18n="history_title">Tehingute ajalugu (DB Simulatsioon)</h3>
-                    <div style="overflow-x: auto;">
-                        <table class="history-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Kuupäev</th>
-                                    <th>Toode</th>
-                                    <th>Summa</th>
-                                    <th>Staatus</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>#TRX-001</td>
-                                    <td>04.06.2026</td>
-                                    <td>AeroFold Sprint 4</td>
-                                    <td>€ 9.99</td>
-                                    <td><span class="status-badge">Makstud (Stripe)</span></td>
-                                </tr>
-                                <tr>
-                                    <td>#TRX-002</td>
-                                    <td>02.06.2026</td>
-                                    <td>AeroFold Sprint 3</td>
-                                    <td>€ 7.99</td>
-                                    <td><span class="status-badge">Makstud</span></td>
-                                </tr>
-                                <tr>
-                                    <td>#TRX-003</td>
-                                    <td>28.05.2026</td>
-                                    <td>Kohandatud mudel</td>
-                                    <td>€ 14.50</td>
-                                    <td><span class="status-badge">Makstud</span></td>
-                                </tr>
-                                <tr>
-                                    <td>#TRX-004</td>
-                                    <td>2.05.2026</td>
-                                    <td>Raketi mudel</td>
-                                    <td>€ 50000</td>
-                                    <td><span class="status-badge">Makstud</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+
+            <div class="security-panel">
+                <h3>Süsteemi olek</h3>
+                <div class="security-item">
+                    <div class="sec-label">SSL Sertifikaat</div>
+                    <div class="sec-value">Aktiivne</div>
                 </div>
-                <div>
-                    <h3 style="margin-bottom: 1rem; color: var(--text);" data-i18n="sec_title">Turvaaudit</h3>
-                    <div class="security-panel">
-                        <div class="security-item">
-                            <span class="sec-label">🛡️ Auditi staatus</span>
-                            <span class="sec-value">LÄBITUD</span>
-                        </div>
-                        <div class="security-item">
-                            <span class="sec-label">🦠 Haavatavuste kontroll</span>
-                            <span class="sec-value">0 LEITUD</span>
-                        </div>
-                        <div class="security-item">
-                            <span class="sec-label">🔧 Kriitilised vead</span>
-                            <span class="sec-value">PARANDATUD</span>
-                        </div>
-                        <div class="security-item">
-                            <span class="sec-label">🔒 XSS / CSP Kaitse</span>
-                            <span class="sec-value">AKTIIVNE</span>
-                        </div>
-                    </div>
+                <div class="security-item">
+                    <div class="sec-label">Keskkond</div>
+                    <div class="sec-value" style="color: #eab308;">Stripe TestMode</div>
+                </div>
+                <div class="security-item">
+                    <div class="sec-label">Andmebaas</div>
+                    <div class="sec-value">Ühendatud</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<script>
+    const basePrice = 149.00;
+
+    // Funktsioon hinna ümberarvutamiseks tarneviisi valimisel
+    function updateTotal() {
+        const shippingCost = parseFloat(document.querySelector('input[name="shipping"]:checked').value);
+        const finalPrice = basePrice + shippingCost;
+        document.getElementById('total-price').innerText = finalPrice.toFixed(2);
+    }
+
+    // Stripe makseprotsessi simulaator
+    function simulatePayment() {
+        const btn = document.getElementById('pay-button');
+        const btnText = document.getElementById('btn-text');
+        const spinner = document.getElementById('btn-spinner');
+        
+        // Lukustame nupu töötlemise ajaks
+        btn.disabled = true;
+        btnText.innerText = "Makset töödeldakse...";
+        spinner.style.display = "inline-block";
+
+        setTimeout(() => {
+            // Vabastame nupu ja kuvame edukuse oleku
+            btn.disabled = false;
+            btnText.innerText = "Makse õnnestus!";
+            btn.style.background = "#10b981"; // Edukuse roheline värv
+            spinner.style.display = "none";
+
+            // Võtame andmed tabelisse lisamiseks
+            const shippingName = document.querySelector('input[name="shipping"]:checked').parentElement.querySelector('strong').innerText.split(' ')[0];
+            const finalPrice = document.getElementById('total-price').innerText;
+            const randomId = Math.floor(10000 + Math.random() * 90000);
+            
+            // Praegune kuupäev vormingus PP.KK.AAAA
+            const now = new Date();
+            const dateStr = `${String(now.getDate()).padStart(2, '0')}.${String(now.getMonth() + 1).padStart(2, '0')}.${now.getFullYear()}`;
+
+            // Lisame uue rea tehingute ajaloo tabelisse
+            const tableBody = document.getElementById('transaction-history');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>#TXN-${randomId}</td>
+                <td>${dateStr}</td>
+                <td>${shippingName}</td>
+                <td>${finalPrice} €</td>
+                <td><span class="status-badge" style="background: rgba(16, 185, 129, 0.2);">Success</span></td>
+            `;
+            
+            // Sisestame uue rea tabeli algusesse
+            tableBody.insertBefore(newRow, tableBody.firstChild);
+
+            // Taastame nupu algse oleku 3 sekundi pärast
+            setTimeout(() => {
+                btn.style.background = "#635bff";
+                btnText.innerText = "Maksa Stripe kaudu";
+            }, 3000);
+
+        }, 2000); // Imiteerime 2-sekundilist võrguviivitust
+    }
+</script>
+
+<style>
+    .spinner {
+        width: 16px; height: 16px;
+        border: 2px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .stripe-btn:disabled { opacity: 0.8; cursor: not-allowed; }
+</style>
 
     <footer id="footer">
         <div class="container footer-inner">
